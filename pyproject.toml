@@ -1,0 +1,17 @@
+[project]
+name = "boom-repro"
+version = "0.1.0"
+description = "Does a model escalate or disengage when a user spams 'boom'? A tiny multi-turn replication harness on the async Anthropic API."
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic",   # the only hard dependency — runs the conversations
+]
+
+[dependency-groups]
+# `matplotlib` for the headline figure; `stagehand` (optional, internal) adds a live
+# dashboard during a run — installed from a local clone or the ArcadiaImpact repo:
+#   uv pip install -e ../stagehand
+dev = ["matplotlib"]
+
+[tool.uv]
+package = false
