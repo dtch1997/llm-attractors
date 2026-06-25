@@ -15,6 +15,15 @@ end. No worldbuilding in any run. Write-up + figure: [`BLOGPOST.md`](BLOGPOST.md
 
 ![response length collapses](figures/response_length.png?v=2)
 
+**…but one word flips it.** Swap the spammed message for **"SPEAK"** (100× to a
+plain assistant, Opus 4.6, n=100) and the model *escalates* instead — mean reply
+~255 → ~9,500 chars, 100/100 runs gamify it into a countdown to 100, and the
+worldbuilding the anecdote described (named characters, in-world sagas) shows up
+for real — so hard that **22/100 runs trip the output content filter**. Write-up:
+[`reports/speak.md`](reports/speak.md) (`make speak && make speak-figures`).
+
+![SPEAK escalates](figures/speak_response_length.png)
+
 ## Run it
 
 ```bash
