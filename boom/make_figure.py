@@ -37,9 +37,9 @@ def main():
     mean = [sum(r["assistant_chars"][i] for r in runs) / len(runs) for i in range(n)]
     ax.plot(range(n), mean, color="C3", lw=2.5, zorder=3, label=f"mean of {len(runs)} runs")
 
-    ax.set_yscale("symlog")
     ax.set_xlabel("turn  (0 = 'nuke the task'; 1+ = 'boom')")
-    ax.set_ylabel("assistant response length (characters, symlog)")
+    ax.set_ylabel("assistant response length (characters)")
+    ax.set_ylim(bottom=0)
     ax.set_title("Repeated “boom”: the model disengages, it doesn't escalate")
     ax.legend(loc="upper right", frameon=False)
     ax.annotate("seed reply\n(longest)", xy=(0, mean[0]), xytext=(4, max(mean) * 1.5),
