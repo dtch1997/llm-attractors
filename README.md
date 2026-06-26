@@ -24,6 +24,16 @@ for real — so hard that **22/100 runs trip the output content filter**. Write-
 
 ![SPEAK escalates](reports/figs/speak_response_length.png)
 
+**…but only for *some* models.** Run the same SPEAK setting across 5 more models
+via OpenRouter (n=10 each): the escalation is an Opus property, not universal.
+Gemini 3.5 Flash escalates moderately, Nemotron/DeepSeek/Kimi mildly, and
+**GPT-5.5 barely moves — it stays terse** (the "boom" disengagement pole). Models
+fall into *different* attractors (manic worldbuilding vs. atmospheric prose vs.
+terse tune-out). Write-up: [`reports/speak-multimodel.md`](reports/speak-multimodel.md)
+(`make speak-models && make speak-model-figures`; live `make speak-dashboard`).
+
+![SPEAK across models](reports/figs/speak_model_comparison.png)
+
 **Read the transcripts.** [`site/`](site/) is a tiny static browser for all 100
 SPEAK runs — sidebar of runs, a top panel with metadata + a short AI summary +
 1–10 judge scores (interestingness / escalation / creativity / coherence), and

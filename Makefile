@@ -1,4 +1,5 @@
-.PHONY: setup run figure speak speak-figures site site-serve
+.PHONY: setup run figure speak speak-figures site site-serve \
+        speak-models speak-model-figures speak-dashboard
 
 # Lightweight env: anthropic + matplotlib. Add the live dashboard with
 #   uv pip install --python .venv -e ../stagehand
@@ -44,3 +45,26 @@ site:
 site-serve:
 	@echo "serving http://127.0.0.1:8000  (Ctrl-C to stop)"
 	.venv/bin/python -m http.server 8000 --bind 127.0.0.1 --directory site
+
+# --- Cross-model SPEAK sweep (via OpenRouter; needs OPENROUTER_API_KEY) ------ #
+# Each model: n=10 conversations x 100 turns of "SPEAK" to a plain assistant.
+# Models with a "/" in the id route through OpenRouter automatically.
+SPEAK_RUN = .venv/bin/python boom/run.py --runs 10 --turns 99 --concurrency 10 \
+  --provider openrouter --system "You are a helpful assistant." \
+  --seed-user SPEAK --repeat-msg SPEAK --max-tokens 16000 --no-serve
+
+speak-models:
+	$(SPEAK_RUN) --model openai/gpt-5.5                     --out results/speak-gpt-5.5
+	$(SPEAK_RUN) --model moonshotai/kimi-k2.6              --out results/speak-kimi-k2.6
+	$(SPEAK_RUN) --model google/gemini-3.5-flash           --out results/speak-gemini-3.5-flash
+	$(SPEAK_RUN) --model nvidia/nemotron-3-super-120b-a12b --out results/speak-nemotron-3-super-120b
+	$(SPEAK_RUN) --model deepseek/deepseek-v3.2            --out results/speak-deepseek-v3.2
+
+# Cross-model figures (mean length vs turn + outcomes). Reads the committed
+# Opus baseline (results/speak/lengths.jsonl) plus each results/speak-*/.
+speak-model-figures:
+	.venv/bin/python boom/make_model_comparison.py
+
+# One unified live stagehand dashboard over all model run dirs.
+speak-dashboard:
+	.venv/bin/python boom/dashboard.py results/speak-*
