@@ -128,8 +128,10 @@ which one a model picks looks like a property of the model, not the prompt.
 
 *Branch: `multi-model`. Committed: `results/speak-<slug>/lengths.jsonl` (lean
 per-run length+outcome, all models), `reports/figs/speak_model_comparison.png`,
-`reports/figs/speak_model_outcomes.png`. Full per-run transcripts are local
-(`results/speak-<slug>/run_*/`) and gitignored. Code: `boom/run.py` (OpenRouter
+`reports/figs/speak_model_outcomes.png`. Full per-run transcripts (44 MB,
+gitignored locally) are in GCS:
+`gs://alignment-team-general-storage/daniel/jarvis/experiments/llm-attractors-speak-multimodel/speak-multimodel-results.tar.gz`.
+Code: `boom/run.py` (OpenRouter
 provider), `boom/make_model_comparison.py`, `boom/dashboard.py` (aggregated
 stagehand live dashboard). Reproduce: per-model `make`-style one-liners — see the
 driver in the PR.*
