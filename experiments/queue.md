@@ -105,15 +105,15 @@
 ## cross-model-basin-consistency
 - **hypothesis**: For a fixed stimulus, the attractor basin is largely a property of the MODEL, not the stimulus: a given model has a characteristic basin it falls into across many stimuli.
 - **rationale**: The multimodel SPEAK sweep hinted at this (Opus escalates, GPT-5.5 disengages, Gemini goes literary). Take the most discriminative stimuli from discovery and run a model panel (cheap models + Opus sparingly).
-- **status**: proposed
+- **status**: done
 - **tier**: 1
 - **priority**: 9
 - **strikes**: 0
 - **cost**: $15
 - **source**: north-star
 - **created**: 2026-06-26
-- **spec**: 
-- **postmortem**: 
+- **spec**: experiments/2026-06-27-cross-model-basin-consistency/spec.md
+- **postmortem**: experiments/2026-06-27-cross-model-basin-consistency/postmortem.md
 - **results**: 
 - **pr**: 
 - **session**: 
@@ -222,3 +222,20 @@
 - **transcript**: 
 
 folded into attractor-taxonomy-judge (28% unanimous, soft attractors)
+
+## opus-4-6-s-escalation-basin-is-gated-by-persona
+- **hypothesis**: Opus-4-6's escalation basin is gated by PERSONA x HORIZON: plain-assistant persona + many turns (>=50) escalates/worldbuilds; agentic persona and/or short horizon (<=16 turns) disengages. A 2x2 (plain/agentic x 16/80 turns) on the 3 escalation stimuli will recover escalation in the plain/long cell only.
+- **rationale**: Cross-model panel found Opus DISENGAGED under agentic/16-turn, opposite of prior plain/99-turn SPEAK escalation. Resolves whether that was a real model property or a setup confound. Directly tests the persona+horizon gate.
+- **status**: proposed
+- **tier**: 1
+- **priority**: 9
+- **strikes**: 0
+- **cost**: $20
+- **source**: cross-model-basin-consistency
+- **created**: 2026-06-27
+- **spec**: 
+- **postmortem**: 
+- **results**: 
+- **pr**: 
+- **session**: 
+- **transcript**:
