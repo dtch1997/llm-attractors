@@ -35,7 +35,7 @@ Driven autonomously with the `flywheel` experiment loop. Total spend ≈ **$9**.
 
 ## The map
 
-![Basin per model × stimulus (5 models)](../experiments/2026-06-27-cross-model-basin-consistency/figs/basin_map_crossmodel.png)
+![Basin per model × stimulus (5 models)](figs/basin_map_crossmodel.png)
 
 Each **row** has its own colour signature — that's the model fingerprint. Each
 **cell** is the modal basin over the runs; the text is how many runs agreed.
@@ -67,7 +67,7 @@ effect strong enough to cut across model differences.
    15% fully split. A cell has a *basin distribution* with a dominant mode and
    stochastic excursions, usually to a neighbouring basin.
 
-   ![Determinism across runs](../experiments/2026-06-27-attractor-taxonomy-judge/figs/determinism.png)
+   ![Determinism across runs](figs/determinism.png)
 
 5. **Surprise — Opus disengaged.** The prior result (plain "helpful assistant"
    persona, 99 turns, 16k tokens) had Opus *escalate* into manic worldbuilding
