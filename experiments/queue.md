@@ -3,7 +3,7 @@
 ## stimulus-sweep-discovery
 - **hypothesis**: Repeatedly prompting a cheap model with diverse single stimuli (words, questions, punctuation, emoji, nonsense) yields MORE than the 3 known basins (disengage / escalate-worldbuild / literary); we can discover the range cheaply.
 - **rationale**: Keystone discovery run. We only have boom/SPEAK so far. Sweep ~24 stimuli x small-N on one cheap model to map how many distinct basins exist before investing in cross-model work.
-- **status**: proposed
+- **status**: running
 - **tier**: 0
 - **priority**: 9
 - **strikes**: 0

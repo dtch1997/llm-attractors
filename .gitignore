@@ -13,3 +13,11 @@ results/speak/all_trajectories.jsonl
 results/speak-*/run_*/
 results/speak-*/trajectories.jsonl
 results/speak-*/all_trajectories.jsonl
+# Discovery sweep: bulky per-run transcripts + full jsonl live in GCS
+# (gs://.../llm-attractors-stimulus-sweep-discovery/). Keep only lean artifacts:
+# lengths.jsonl, summary.csv, samples.md.
+results/discovery/*/*/run_*/
+results/discovery/*/*/trajectories.jsonl
+results/discovery/*/*/status.html
+results/discovery/*/*/*.progress.json
+results/discovery/all.jsonl
