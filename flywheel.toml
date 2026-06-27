@@ -1,0 +1,55 @@
+# flywheel — llm-attractors experiment loop.
+# CLI: `flywheel` (installed at ~/.local/bin/flywheel).
+# North star: map the different ATTRACTOR STATES of LLMs under repeated prompting.
+# Drive in-harness with `flywheel prompt` (or `/loop next-experiment`).
+
+backlog_path = "experiments/queue.md"
+ledger_path  = ".flywheel/spend.jsonl"
+cli          = "flywheel"
+
+# --- What the agent reads as context each iteration ---------------------
+# Order = priority. North stars first (the steering doc), then prior reports
+# (what attractors we've already seen), the prediction track record, and the
+# most recent experiment writeups.
+
+[[sources]]
+kind  = "file"
+label = "north stars (steer me by editing this)"
+path  = "NORTH_STARS.md"
+
+[[sources]]
+kind      = "recent_glob"
+label     = "prior reports (attractors already observed)"
+pattern   = "reports/*.md"
+n         = 3
+max_chars = 3000
+
+[[sources]]
+kind      = "file"
+label     = "prediction track record (calibration)"
+path      = "experiments/prediction-registry.md"
+max_chars = 2500
+
+[[sources]]
+kind      = "recent_glob"
+label     = "recent experiment writeups"
+pattern   = "experiments/*/postmortem.md"
+n         = 5
+max_chars = 2500
+
+# --- Guardrails. Budget is the real rail. -------------------------------
+[guardrails]
+max_tier         = 2      # may pick any tier; budget bounds blast radius
+daily_budget_usd = 200.0  # total research budget for this push
+max_strikes      = 3      # 3 uninformative runs on one hypothesis -> dropped
+
+# --- Agent runner -------------------------------------------------------
+# Primary mode is in-harness: `flywheel prompt` emits the iteration; the
+# surrounding Claude Code session does the science.
+[runner]
+kind = "claude"
+bin  = "claude"
+
+# --- Project-specific protocol ------------------------------------------
+[prompt]
+protocol_file = "experiments/LOOP_PROTOCOL.md"
